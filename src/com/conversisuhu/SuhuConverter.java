@@ -5,6 +5,8 @@
 package com.conversisuhu;
 
 import java.awt.event.KeyEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -17,6 +19,24 @@ public class SuhuConverter extends javax.swing.JFrame {
      */
     public SuhuConverter() {
         initComponents();
+        txtInput.getDocument().addDocumentListener(new DocumentListener() {
+        public void insertUpdate(DocumentEvent e) {
+            toggleConvertClearButtons();
+        }
+        public void removeUpdate(DocumentEvent e) {
+            toggleConvertClearButtons();
+        }
+        public void changedUpdate(DocumentEvent e) {
+            toggleConvertClearButtons();
+        }
+    
+    private void toggleConvertClearButtons() {
+        boolean hasText = !txtInput.getText().trim().isEmpty();
+        btnConvert.setEnabled(hasText);
+        btnClear.setEnabled(hasText);
+    }
+});
+
     }
 
     /**
@@ -94,6 +114,11 @@ public class SuhuConverter extends javax.swing.JFrame {
 
         btnConvert.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnConvert.setText("Konversi");
+        btnConvert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConvertActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -102,6 +127,11 @@ public class SuhuConverter extends javax.swing.JFrame {
 
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -193,6 +223,15 @@ public class SuhuConverter extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtInputKeyTyped
 
+    private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
+        btnConvert.setEnabled(false);
+    }//GEN-LAST:event_btnConvertActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        btnClear.setEnabled(false);
+    }//GEN-LAST:event_btnClearActionPerformed
+    
+   
     /**
      * @param args the command line arguments
      */
