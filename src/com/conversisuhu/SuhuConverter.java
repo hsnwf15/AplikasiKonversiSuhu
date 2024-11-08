@@ -222,7 +222,29 @@ public class SuhuConverter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private double convertTemperature(double value, String fromScale, String toScale) {
+        switch (fromScale + " to " + toScale) {
+            case "Celsius to Fahrenheit": return value * 9/5 + 32;
+            case "Celsius to Kelvin": return value + 273.15;
+            case "Celsius to Reamur": return value * 4/5;
 
+            case "Fahrenheit to Celsius": return (value - 32) * 5/9;
+            case "Fahrenheit to Kelvin": return (value - 32) * 5/9 + 273.15;
+            case "Fahrenheit to Reamur": return (value - 32) * 4/9;
+
+            case "Kelvin to Celsius": return value - 273.15;
+            case "Kelvin to Fahrenheit": return (value - 273.15) * 9/5 + 32;
+            case "Kelvin to Reamur": return (value - 273.15) * 4/5;
+
+            case "Reamur to Celsius": return value * 5/4;
+            case "Reamur to Fahrenheit": return value * 9/4 + 32;
+            case "Reamur to Kelvin": return value * 5/4 + 273.15;
+
+            default: return value; // Tidak ada konversi jika fromScale sama dengan toScale
+        }
+    }
+
+    
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtInput.setText("");
         lblOutput.setText("");
