@@ -19,8 +19,30 @@ public class SuhuConverter extends javax.swing.JFrame {
     /**
      * Creates new form SuhuConverter
      */
+    private boolean autoConvertEnabled = false;
+    private void enableAutoConvert(boolean enable) {
+        autoConvertEnabled = enable;
+    }
     public SuhuConverter() {
         initComponents();
+        txtInput.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                convertIfAutoEnabled();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                convertIfAutoEnabled();
+            }
+            public void changedUpdate(DocumentEvent e) {
+                convertIfAutoEnabled();
+            }
+
+            private void convertIfAutoEnabled() {
+                if (autoConvertEnabled && !txtInput.getText().trim().isEmpty()) {
+                    btnConvert.doClick(); // Menjalankan konversi otomatis
+                }
+            }
+        });
+
         
         txtInput.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -244,6 +266,15 @@ public class SuhuConverter extends javax.swing.JFrame {
         }
     }
 
+    private String getSelectedRadioButtonText() {
+        if (rbToCelsius.isSelected()) return "Celsius";
+        if (rbToFahrenheit.isSelected()) return "Fahrenheit";
+        if (rbToKelvin.isSelected()) return "Kelvin";
+        if (rbToReamur.isSelected()) return "Reamur";
+        return null;
+    }
+
+    
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtInput.setText("");
