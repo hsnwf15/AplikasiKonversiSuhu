@@ -4,7 +4,9 @@
  */
 package com.conversisuhu;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -19,23 +21,36 @@ public class SuhuConverter extends javax.swing.JFrame {
      */
     public SuhuConverter() {
         initComponents();
+        
+        txtInput.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE && c != '.') {
+                    e.consume();
+                }
+            }
+        });
         txtInput.getDocument().addDocumentListener(new DocumentListener() {
-        public void insertUpdate(DocumentEvent e) {
-            toggleConvertClearButtons();
-        }
-        public void removeUpdate(DocumentEvent e) {
-            toggleConvertClearButtons();
-        }
-        public void changedUpdate(DocumentEvent e) {
-            toggleConvertClearButtons();
-        }
-    
-    private void toggleConvertClearButtons() {
-        boolean hasText = !txtInput.getText().trim().isEmpty();
-        btnConvert.setEnabled(hasText);
-        btnClear.setEnabled(hasText);
-    }
-});
+            public void insertUpdate(DocumentEvent e) {
+                toggleConvertClearButtons();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                toggleConvertClearButtons();
+            }
+            public void changedUpdate(DocumentEvent e) {
+                toggleConvertClearButtons();
+            }
+
+            private void toggleConvertClearButtons() {
+                boolean hasText = !txtInput.getText().trim().isEmpty();
+                btnConvert.setEnabled(hasText);
+                btnClear.setEnabled(hasText);
+            }
+        });
+        
+        // Pastikan tombol Convert dan Clear tidak aktif saat pertama kali
+        btnConvert.setEnabled(false);
+        btnClear.setEnabled(false);
 
     }
 
@@ -137,12 +152,6 @@ public class SuhuConverter extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
         jPanel1.add(btnClear, gridBagConstraints);
-
-        txtInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtInputKeyTyped(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -202,34 +211,38 @@ public class SuhuConverter extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addGap(160, 160, 160))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume(); // Mengabaikan input yang bukan angka
-        }
-    }//GEN-LAST:event_txtInputKeyTyped
-
-    private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
-        btnConvert.setEnabled(false);
-    }//GEN-LAST:event_btnConvertActionPerformed
-
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtInput.setText("");
+        lblOutput.setText("");
+        enableAutoConvert(false); // Nonaktifkan konversi otomatis
+        btnConvert.setEnabled(false);
         btnClear.setEnabled(false);
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
+        try {
+            double inputValue = Double.parseDouble(txtInput.getText());
+            String fromScale = cbInputScale.getSelectedItem().toString();
+            String toScale = getSelectedRadioButtonText(); // Implementasi di bawah
+            double result = convertTemperature(inputValue, fromScale, toScale);
+            lblOutput.setText(String.format("%.2f %s", result, toScale));
+            enableAutoConvert(true); // Aktifkan konversi otomatis
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Input tidak valid. Masukkan angka yang benar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnConvertActionPerformed
     
    
     /**
