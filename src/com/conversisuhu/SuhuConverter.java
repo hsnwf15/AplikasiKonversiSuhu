@@ -4,6 +4,8 @@
  */
 package com.conversisuhu;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Lenovo
@@ -105,6 +107,12 @@ public class SuhuConverter extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
         jPanel1.add(btnClear, gridBagConstraints);
+
+        txtInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInputKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -177,6 +185,13 @@ public class SuhuConverter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Mengabaikan input yang bukan angka
+        }
+    }//GEN-LAST:event_txtInputKeyTyped
 
     /**
      * @param args the command line arguments
