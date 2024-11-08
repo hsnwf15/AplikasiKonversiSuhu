@@ -25,18 +25,154 @@ public class SuhuConverter extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        cbInputScale = new javax.swing.JComboBox<>();
+        rbToCelsius = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnConvert = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        txtInput = new javax.swing.JTextField();
+        rbToKelvin = new javax.swing.JRadioButton();
+        rbToReamur = new javax.swing.JRadioButton();
+        rbToFahrenheit = new javax.swing.JRadioButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblOutput = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aplikasi Konversi Suhu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        cbInputScale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheit", "Kelvin", "Reamur" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(cbInputScale, gridBagConstraints);
+
+        buttonGroup1.add(rbToCelsius);
+        rbToCelsius.setText("Celsius");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(rbToCelsius, gridBagConstraints);
+
+        jLabel2.setText("Masukkan Suhu:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        jLabel3.setText("Pilih Suhu Awal:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(jLabel3, gridBagConstraints);
+
+        jLabel4.setText("Target Konversi");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(jLabel4, gridBagConstraints);
+
+        btnConvert.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConvert.setText("Konversi");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(btnConvert, gridBagConstraints);
+
+        btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnClear.setText("Clear");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(btnClear, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(txtInput, gridBagConstraints);
+
+        buttonGroup1.add(rbToKelvin);
+        rbToKelvin.setText("Kelvin");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(rbToKelvin, gridBagConstraints);
+
+        buttonGroup1.add(rbToReamur);
+        rbToReamur.setText("Reamur");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(rbToReamur, gridBagConstraints);
+
+        buttonGroup1.add(rbToFahrenheit);
+        rbToFahrenheit.setText("Fahrenheit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 12);
+        jPanel1.add(rbToFahrenheit, gridBagConstraints);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hasil Konversi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        lblOutput.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblOutput.setText("-");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(37, 37, 37, 37);
+        jPanel3.add(lblOutput, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel1.add(jPanel3, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +214,20 @@ public class SuhuConverter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnConvert;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbInputScale;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblOutput;
+    private javax.swing.JRadioButton rbToCelsius;
+    private javax.swing.JRadioButton rbToFahrenheit;
+    private javax.swing.JRadioButton rbToKelvin;
+    private javax.swing.JRadioButton rbToReamur;
+    private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
 }
