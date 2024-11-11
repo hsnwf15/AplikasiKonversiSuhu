@@ -37,6 +37,13 @@ Aplikasi ini adalah aplikasi konversi suhu berbasis Java dengan antarmuka grafis
 - **Logika Konversi**: Metode `convertTemperature` melakukan konversi suhu berdasarkan skala yang dipilih.
 - **Konversi Otomatis**: Dikendalikan oleh flag boolean `autoConvertEnabled` yang mengaktifkan/menonaktifkan konversi otomatis ketika input berubah.
 
+## Screenshot Aplikasi
+### Tampilan Awal Program
+![Tampilan Awal Program](screenshot_awal_program.PNG)
+
+### Memasukkan Suhu, Memilih Suhu Awal dan Target Konversi, Lalu Menjalankan Konversi
+![screenshot](image.png)
+
 ## Logika Konversi Suhu
 
 Aplikasi menggunakan rumus konversi berikut:
