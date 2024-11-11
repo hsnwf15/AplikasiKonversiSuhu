@@ -39,7 +39,7 @@ Aplikasi ini adalah aplikasi konversi suhu berbasis Java dengan antarmuka grafis
 
 ## Screenshot Aplikasi
 ### Tampilan Awal Program
-![Tampilan Awal Program](screenshot awal program.png)
+![Tampilan Awal Program](screenshot_awal_program.png)
 
 ### Memasukkan Suhu, Memilih Suhu Awal dan Target Konversi, Lalu Menjalankan Konversi
 ![screenshot](image.png)
